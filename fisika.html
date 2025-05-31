@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Penjelasan Fisika — Oleh Ijat</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Particles.js CDN -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(to bottom, #ffffff, #ffe6f0, #e6f2ff); 
+      --primary-blue: #AEC6CF;
+      --soft-pink: #FFC0CB;
+      --white: #FFFFFF;
+      --dark-navy: #4B4B84;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-gradient);
+      color: var(--dark-navy);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding-top: 4rem;
+      padding-bottom: 2rem;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--dark-navy);
+    }
+
+    header p {
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      color: #666;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .kartu {
+      background-color: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .kartu:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    }
+
+    .kartu h3 {
+      margin: 0;
+      font-size: 1.25rem;
+      color: var(--dark-navy);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .kartu h3::before {
+      content: "📘";
+    }
+
+    .penjelasan {
+      display: none;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid #eee;
+      color: #555;
+      font-size: 0.95rem;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Fullscreen Background with Particles */
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Particles Background -->
+<div id="particles-js"></div>
+
+<script>
+// Particles Config
+particlesJS("particles-js", {
+  "particles": {
+    "number": { "value": 60 },
+    "density": { "enable": true, "value_area": 800 },
+    "color": { "value": "#AEC6CF" },
+    "shape": { "type": "circle" },
+    "opacity": { "value": 0.3, "random": true },
+    "size": { "value": 5, "random": true },
+    "line_linked": { "enable": false },
+    "move": {
+      "enable": true,
+      "speed": 0.5,
+      "direction": "none",
+      "random": true,
+      "straight": false,
+      "out_mode": "out"
+    }
+  },
+  "interactivity": {
+    "events": { "onhover": { "enable": false }, "onclick": { "enable": false } },
+    "modes": { "push": { "particles_nb": 1 } }
+  },
+  "retina_detect": true
+});
+</script>
+
+<!-- Header -->
+<header>
+  <h1>Penjelasan Fisika — Oleh Ijat</h1>
+  <p>Berikut penjelasan dari Ijat tentang berbagai konsep penting dalam pelajaran Fisika. Klik kartu untuk melihat penjelasannya!</p>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+  <!-- Kartu 1 -->
+  <section class="kartu" onclick="togglePenjelasan(this)">
+    <h3>Kartu 1: Energi</h3>
+    <div class="penjelasan">
+      <ul>
+        <li><strong>Pengertian:</strong> Energi adalah kemampuan untuk melakukan usaha atau kerja.</li>
+        <li><strong>Hukum Kekekalan Energi:</strong> Dalam sistem tertutup tanpa gaya luar (gaya gesek diabaikan), energi mekanik total tetap. Artinya jika energi potensial bertambah, maka energi kinetik akan berkurang, dan sebaliknya.</li>
+        <li><strong>Energi Primer:</strong> Energi alami yang belum diolah, contoh: sinar matahari, angin, batu bara.</li>
+        <li><strong>Energi Sekunder:</strong> Energi hasil pengolahan dari primer, contoh: listrik PLN, bensin.</li>
+        <li><strong>Contoh Perubahan Energi:</strong><br/>
+          <em>Kipas Angin</em><br/>
+          - Energi awal: Listrik<br/>
+          - Energi akhir: Gerak<br/>
+          - Sumber: Listrik PLN
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Kartu 2 -->
+  <section class="kartu" onclick="togglePenjelasan(this)">
+    <h3>Kartu 2: Energi Mekanik</h3>
+    <div class="penjelasan">
+      <ul>
+        <li><strong>Pernyataan Hukum:</strong> Jumlah total energi kinetik dan energi potensial pada suatu benda selalu tetap selama tidak ada gaya luar yang bekerja.</li>
+        <li><strong>Hubungan EP & EK pada Ayunan:</strong><br/>
+          - <em>Titik Tertinggi</em>: EP maksimum, EK = 0<br/>
+          - <em>Menuju Titik Terendah</em>: EP menurun, EK meningkat<br/>
+          - <em>Titik Terendah</em>: EP minimum, EK maksimum<br/>
+          - <em>Kembali ke Titik Tertinggi</em>: EK menurun, EP meningkat
+        </li>
+        <li><strong>Rumus Kekekalan Energi Mekanik:</strong><br/>
+          EK₁ + EP₁ = EK₂ + EP₂
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Kartu 3 -->
+  <section class="kartu" onclick="togglePenjelasan(this)">
+    <h3>Kartu 3: Energi Potensial</h3>
+    <div class="penjelasan">
+      <ul>
+        <li><strong>Pengertian:</strong> Energi yang dimiliki benda karena posisi/kedudukannya. Semakin tinggi benda tersebut, makin besar energi potensialnya.</li>
+        <li><strong>Rumus:</strong> EP = m × g × h<br/>
+          m = massa (kg)<br/>
+          g = percepatan gravitasi (≈10 m/s²)<br/>
+          h = ketinggian (meter)
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Kartu 4 -->
+  <section class="kartu" onclick="togglePenjelasan(this)">
+    <h3>Kartu 4: Energi Kinetik</h3>
+    <div class="penjelasan">
+      <ul>
+        <li><strong>Pengertian:</strong> Energi yang dimiliki benda karena geraknya. Makin cepat benda bergerak, makin besar energi kinetiknya.</li>
+        <li><strong>Rumus:</strong> EK = ½ × m × v²<br/>
+          m = massa benda (kg)<br/>
+          v = kecepatan benda (m/s)
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Kartu 5 -->
+  <section class="kartu" onclick="togglePenjelasan(this)">
+    <h3>Kartu 5: Energi Kalor</h3>
+    <div class="penjelasan">
+      <ul>
+        <li><strong>Pengertian:</strong> Energi yang berasal dari panas atau pergerakan partikel benda.</li>
+        <li><strong>Perpindahan Kalor:</strong>
+          <ul>
+            <li><strong>Konduksi:</strong> Panas merambat melalui benda padat tanpa partikel ikut bergerak. Contoh: pegang sendok logam yang ujungnya dipanaskan.</li>
+            <li><strong>Konveksi:</strong> Panas berpindah bersama aliran partikel. Contoh: air mendidih di panci, angin laut/darat.</li>
+            <li><strong>Radiasi:</strong> Panas merambat tanpa medium. Contoh: panas matahari sampai ke bumi.</li>
+          </ul>
+        </li>
+        <li><strong>Rumus Menghitung Kalor:</strong><br/>
+          Q = m × c × ΔT<br/>
+          m = massa zat (kg/g)<br/>
+          c = kalor jenis (J/kg°C / J/g°C)<br/>
+          ΔT = perubahan suhu (°C)
+        </li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+  <section class="kartu" onclick="togglePenjelasan(this)">
+    <h3>???</h3>
+    <div class="penjelasan">
+      <p>TUNGGU UPDATE YAHH, PENH YANG BAIK, DAN MANISS. SEKALI LAGI AKU MINTA MAAF</p>
+    </div>
+
+<!-- JavaScript Toggle -->
+<script>
+  function togglePenjelasan(element) {
+    const explanation = element.querySelector('.penjelasan');
+    explanation.style.display = explanation.style.display === 'block' ? 'none' : 'block';
+  }
+</script>
+
+</body>
+</html>
