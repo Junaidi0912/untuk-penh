@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maafkan Aku, Penh</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0a0a1a;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Cosmic Background */
+        .cosmic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            animation: twinkle var(--duration) infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+
+        .nebula {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.4;
+            animation: nebulaPulse var(--duration) infinite alternate;
+        }
+
+        @keyframes nebulaPulse {
+            0% { transform: scale(1); opacity: 0.3; }
+            100% { transform: scale(1.2); opacity: 0.5; }
+        }
+
+        .particle {
+            position: absolute;
+            background: radial-gradient(circle, rgba(255,105,180,0.8) 0%, rgba(255,105,180,0) 70%);
+            border-radius: 50%;
+            animation: particleMove linear infinite;
+        }
+
+        @keyframes particleMove {
+            0% {
+                transform: translate(0, 0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty));
+                opacity: 0;
+            }
+        }
+
+        /* Floating Elements */
+        .floating-shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float var(--duration) infinite ease-in-out;
+            filter: blur(1px);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(10px, -15px) rotate(5deg); }
+            50% { transform: translate(0, -20px) rotate(0deg); }
+            75% { transform: translate(-10px, -15px) rotate(-5deg); }
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(5px);
+            background-color: rgba(10, 10, 26, 0.7);
+            border-radius: 20px;
+            margin-top: 2rem;
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.2);
+            border: 1px solid rgba(255, 105, 180, 0.1);
+        }
+
+        /* Header */
+        header {
+            margin-bottom: 3rem;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        h1 {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 3.5rem;
+            color: #FF69B4;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #aaa;
+            font-weight: 300;
+        }
+
+        /* Content */
+        .content {
+            background-color: rgba(20, 20, 40, 0.7);
+            padding: 2.5rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            animation: slideUp 1s ease-out;
+            border: 1px solid rgba(255, 105, 180, 0.2);
+        }
+
+        .content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #FF69B4, transparent);
+        }
+
+        .apology-text {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: #ddd;
+            text-align: left;
+        }
+
+        .highlight {
+            color: #FF69B4;
+            font-weight: 600;
+            text-shadow: 0 0 5px rgba(255, 105, 180, 0.3);
+        }
+
+        /* Progress Section */
+        .progress-container {
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .progress-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #FF69B4;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, #FF69B4, #FF8E9E);
+            border-radius: 4px;
+            transition: width 1.5s ease-out;
+            box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+        }
+
+        /* Button */
+        .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #FF69B4, #FF8E9E);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+            position: relative;
+            overflow: hidden;
+            font-family: 'Quicksand', sans-serif;
+            z-index: 1;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.7);
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 3rem;
+            font-size: 0.9rem;
+            color: #888;
+            animation: fadeIn 2s ease-out;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Interactive Elements */
+        .interactive-box {
+            background-color: rgba(255, 105, 180, 0.1);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 3px solid #FF69B4;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .interactive-box:hover {
+            transform: translateX(5px);
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.2);
+        }
+
+        .interactive-title {
+            font-weight: 600;
+            color: #FF69B4;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .interactive-title i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        /* Material Preview */
+        .material-preview {
+            background-color: rgba(40, 40, 60, 0.5);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border: 1px dashed #FF69B4;
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+
+        .material-preview:hover {
+            border: 1px solid #FF69B4;
+            box-shadow: 0 0 10px rgba(255, 105, 180, 0.2);
+        }
+
+        .material-title {
+            font-weight: 600;
+            color: #FF69B4;
+            margin-bottom: 0.5rem;
+        }
+
+        .material-excerpt {
+            font-size: 0.9rem;
+            color: #bbb;
+        }
+
+        /* Cosmic Ray */
+        .cosmic-ray {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .ray {
+            position: absolute;
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, rgba(255, 105, 180, 0.3), transparent);
+            animation: rayAnimation 15s infinite linear;
+            transform-origin: bottom center;
+        }
+
+        @keyframes rayAnimation {
+            0% { transform: rotate(0deg) translateY(0); opacity: 0; }
+            10% { opacity: 0.5; }
+            90% { opacity: 0.5; }
+            100% { transform: rotate(360deg) translateY(-100px); opacity: 0; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .content {
+                padding: 1.5rem;
+            }
+            
+            .apology-text {
+                font-size: 1rem;
+            }
+            
+            .container {
+                margin-top: 1rem;
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cosmic Background Elements -->
+    <div class="cosmic-bg" id="cosmicBg"></div>
+    <div class="cosmic-ray" id="cosmicRay"></div>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <header>
+            <h1>Maafkan Aku, Penh</h1>
+            <p class="subtitle">Permintaan maaf dengan kesungguhan</p>
+        </header>
+        
+        <div class="content">
+            <p class="apology-text">
+                Aku benar-benar minta maaf atas sikapku waktu itu. Kamu sudah berusaha menjelaskan materi ulangan Bahasa Indonesia dengan baik, tapi aku malah bikin kamu kesal dan marah. Aku sadar itu salah dan nggak seharusnya terjadi.
+            </p>
+            
+            <div class="interactive-box">
+                <div class="interactive-title">
+                    <span>📚</span> Poin Kesalahanku:
+                </div>
+                <ul style="text-align: left; padding-left: 1.5rem; color: #ddd;">
+                    <li>Tidak menghargai usahamu menjelaskan</li>
+                    <li>Bersikap tidak serius saat belajar</li>
+                    <li>Membuat waktu belajarmu sia-sia</li>
+                </ul>
+            </div>
+            
+            <p class="apology-text">
+                <span class="highlight">Aku janji akan lebih serius dan menghargai waktumu.</span> Aku sudah menyiapkan beberapa perbaikan yang akan kulakukan:
+            </p>
+            
+            <div class="progress-container">
+                <div class="progress-title">Keseriusan Belajar</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress1"></div>
+                </div>
+                
+                <div class="progress-title">Menghargai Waktumu</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress2"></div>
+                </div>
+                
+                <div class="progress-title">Pemahaman Materi</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress3"></div>
+                </div>
+            </div>
+            
+            <div class="material-preview">
+                <div class="material-title">📝 Preview Materi Bahasa Indonesia</div>
+                <div class="material-excerpt">
+                    Aku sudah mempelajari ulang materi yang kamu jelaskan. Ternyata memang penting untuk memahami pengertian, struktu, dll. mengenai jenis jenis teks yang akan di keluarkan pada ulangan nanti...
+                </div>
+            </div>
+            
+            <button class="btn" id="materialBtn">Lihat Penjelasan Lengkap Materi</button>
+        </div>
+        
+        <footer>
+            Dibuat dengan kesadaran penuh akan kesalahan dan tekad untuk memperbaiki
+        </footer>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create cosmic background
+            createCosmicBackground();
+            createFloatingShapes();
+            createCosmicRays();
+            
+            // Animate progress bars
+            setTimeout(() => {
+                document.getElementById('progress1').style.width = '85%';
+                document.getElementById('progress2').style.width = '80%';
+                document.getElementById('progress3').style.width = '75%';
+            }, 500);
+            
+            // Button click effect
+            const materialBtn = document.getElementById('materialBtn');
+            materialBtn.addEventListener('click', function() {
+                // Create particle explosion
+                createParticleExplosion(this);
+                
+                // Redirect after delay
+                setTimeout(() => {
+                    alert('ini ada penjelasan singkat, klo yang panjang tunggu keluar langsung dri mulutku');
+                    // window.location.href = 'URL_PENJELASAN_MATERI';
+                }, 800);
+            });
+            
+            // Functions
+            function createCosmicBackground() {
+                const cosmicBg = document.getElementById('cosmicBg');
+                
+                // Create stars
+                for (let i = 0; i < 200; i++) {
+                    const star = document.createElement('div');
+                    star.classList.add('star');
+                    
+                    const size = Math.random() * 2 + 0.5;
+                    const duration = Math.random() * 5 + 3;
+                    const delay = Math.random() * 5;
+                    const left = Math.random() * 100;
+                    const top = Math.random() * 100;
+                    
+                    star.style.width = `${size}px`;
+                    star.style.height = `${size}px`;
+                    star.style.left = `${left}vw`;
+                    star.style.top = `${top}vh`;
+                    star.style.animationDuration = `${duration}s`;
+                    star.style.animationDelay = `${delay}s`;
+                    star.style.setProperty('--duration', `${duration}s`);
+                    
+                    cosmicBg.appendChild(star);
+                }
+                
+                // Create nebulas
+                for (let i = 0; i < 5; i++) {
+                    const nebula = document.createElement('div');
+                    nebula.classList.add('nebula');
+                    
+                    const size = Math.random() * 300 + 200;
+                    const duration = Math.random() * 20 + 10;
+                    const left = Math.random() * 100;
+                    const top = Math.random() * 100;
+                    const color = `hsl(${Math.random() * 60 + 320}, 80%, 60%)`;
+                    
+                    nebula.style.width = `${size}px`;
+                    nebula.style.height = `${size}px`;
+                    nebula.style.left = `${left}vw`;
+                    nebula.style.top = `${top}vh`;
+                    nebula.style.animationDuration = `${duration}s`;
+                    nebula.style.backgroundColor = color;
+                    nebula.style.setProperty('--duration', `${duration}s`);
+                    
+                    cosmicBg.appendChild(nebula);
+                }
+            }
+            
+            function createFloatingShapes() {
+                const cosmicBg = document.getElementById('cosmicBg');
+                
+                for (let i = 0; i < 10; i++) {
+                    const shape = document.createElement('div');
+                    shape.classList.add('floating-shape');
+                    
+                    const size = Math.random() * 100 + 50;
+                    const duration = Math.random() * 20 + 10;
+                    const left = Math.random() * 100;
+                    const top = Math.random() * 100;
+                    const color = `hsla(${Math.random() * 60 + 320}, 80%, 60%, 0.1)`;
+                    const shapes = ['circle', 'triangle', 'square'];
+                    const shapeType = shapes[Math.floor(Math.random() * shapes.length)];
+                    
+                    shape.style.width = `${size}px`;
+                    shape.style.height = `${size}px`;
+                    shape.style.left = `${left}vw`;
+                    shape.style.top = `${top}vh`;
+                    shape.style.animationDuration = `${duration}s`;
+                    shape.style.backgroundColor = color;
+                    shape.style.setProperty('--duration', `${duration}s`);
+                    
+                    if (shapeType === 'circle') {
+                        shape.style.borderRadius = '50%';
+                    } else if (shapeType === 'triangle') {
+                        shape.style.width = '0';
+                        shape.style.height = '0';
+                        shape.style.borderLeft = `${size/2}px solid transparent`;
+                        shape.style.borderRight = `${size/2}px solid transparent`;
+                        shape.style.borderBottom = `${size}px solid ${color}`;
+                        shape.style.backgroundColor = 'transparent';
+                    } else {
+                        shape.style.borderRadius = '10%';
+                    }
+                    
+                    cosmicBg.appendChild(shape);
+                }
+            }
+            
+            function createCosmicRays() {
+                const cosmicRay = document.getElementById('cosmicRay');
+                
+                for (let i = 0; i < 5; i++) {
+                    const ray = document.createElement('div');
+                    ray.classList.add('ray');
+                    
+                    const left = Math.random() * 100;
+                    const delay = Math.random() * 5;
+                    
+                    ray.style.left = `${left}vw`;
+                    ray.style.animationDelay = `${delay}s`;
+                    
+                    cosmicRay.appendChild(ray);
+                }
+            }
+            
+            function createParticleExplosion(element) {
+                const rect = element.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                
+                for (let i = 0; i < 50; i++) {
+                    const particle = document.createElement('div');
+                    particle.classList.add('particle');
+                    
+                    const size = Math.random() * 15 + 5;
+                    const duration = Math.random() * 2 + 1;
+                    const angle = Math.random() * Math.PI * 2;
+                    const distance = Math.random() * 100 + 50;
+                    const tx = Math.cos(angle) * distance;
+                    const ty = Math.sin(angle) * distance;
+                    
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
+                    particle.style.left = `${centerX}px`;
+                    particle.style.top = `${centerY}px`;
+                    particle.style.animationDuration = `${duration}s`;
+                    particle.style.setProperty('--tx', `${tx}px`);
+                    particle.style.setProperty('--ty', `${ty}px`);
+                    
+                    document.body.appendChild(particle);
+                    
+                    // Remove particle after animation
+                    setTimeout(() => {
+                        particle.remove();
+                    }, duration * 1000);
+                }
+            }
+            
+            // Animate elements on scroll
+            const observerOptions = {
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            const animatedElements = document.querySelectorAll('.content, footer, .interactive-box, .material-preview');
+            animatedElements.forEach(el => {
+                el.style.opacity = 0;
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
