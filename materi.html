@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Penjelasan Materi Ulangan — Oleh Ijat</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Particles.js CDN -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(to bottom, #ffffff, #ffe6f0, #e6f2ff); 
+      --primary-blue: #AEC6CF;
+      --soft-pink: #FFC0CB;
+      --white: #FFFFFF;
+      --dark-navy: #4B4B84;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-gradient);
+      color: var(--dark-navy);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding-top: 4rem;
+      padding-bottom: 2rem;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--dark-navy);
+    }
+
+    header p {
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      color: #666;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .materi-card {
+      background-color: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .materi-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    }
+
+    .materi-card h3 {
+      margin-bottom: 0.5rem;
+      color: var(--dark-navy);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .materi-card h3::before {
+      content: "📘";
+    }
+
+    .materi-card p {
+      color: #555;
+      font-size: 0.95rem;
+    }
+
+    /* Fullscreen Background with Particles */
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Particles Background -->
+<div id="particles-js"></div>
+
+<script>
+// Particles Config
+particlesJS("particles-js", {
+  "particles": {
+    "number": { "value": 60 },
+    "density": { "enable": true, "value_area": 800 },
+    "color": { "value": "#AEC6CF" },
+    "shape": { "type": "circle" },
+    "opacity": { "value": 0.3, "random": true },
+    "size": { "value": 5, "random": true },
+    "line_linked": { "enable": false },
+    "move": {
+      "enable": true,
+      "speed": 0.5,
+      "direction": "none",
+      "random": true,
+      "straight": false,
+      "out_mode": "out"
+    }
+  },
+  "interactivity": {
+    "events": { "onhover": { "enable": false }, "onclick": { "enable": false } },
+    "modes": { "push": { "particles_nb": 1 } }
+  },
+  "retina_detect": true
+});
+</script>
+
+<!-- Header -->
+<header>
+  <h1>Penjelasan Materi Ulangan — Oleh Ijat</h1>
+  <p>Di halaman ini. Ijat, akan menjelaskan ulang materi ulangan dengan cara yang menurutku paling mudah dipahami. Semoga bisa membantu yang lain juga.</p>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+  <!-- Kotak 1 -->
+  <section class="materi-card" onclick="window.location.href='materi-1.html'">
+    <h3>Materi 1: Fisika</h3>
+    <p>Klik untuk melihat penjelasan lebih lanjut.</p>
+  </section>
+
+  <!-- Kotak 2 -->
+  <section class="materi-card" onclick="window.location.href='materi-2.html'">
+    <h3>Materi 2: TUNGGU UPDATE YAHHH MANIISS :)</h3>
+    <p></p>
+  </section>
+
+  <!-- Tambahkan kotak baru di sini -->
+</div>
+
+</body>
+</html>
